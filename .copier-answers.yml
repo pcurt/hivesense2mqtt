@@ -1,0 +1,12 @@
+# Changes here will be overwritten by Copier
+_commit: 1.4.1
+_src_path: gh:AdrienCos/seedlings
+author_email: pierrickcurt@gmail.com
+author_name: Pierrick Curt
+author_username: pcurt
+enable_release_ci: false
+package_name: hivesense2mqtt
+project_name: Hivesense2mqtt
+repository_url: https://github.com/pcurt/hivesense2mqtt
+short_description: Module that collect data from Lora backend and send to local MQTT
+    broker with HA format
