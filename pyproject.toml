@@ -22,7 +22,11 @@ classifiers = [
 ]
 dependencies = [
     "Click==8.1.7",
-    "loguru==0.7.2",
+    "loguru~=0.7",
+    "paho-mqtt~=2.1",
+    "homeassistant-mqtt-binding~=3.0",
+    "requests~=2.32",
+    "typing-extensions~=4.12",
 ]
 dynamic = ["version"]
 

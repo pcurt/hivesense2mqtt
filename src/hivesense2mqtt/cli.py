@@ -2,13 +2,13 @@
 
 # Standard lib imports
 import sys
+import time
 
 # Third-party lib imports
 import click
 from loguru import logger
 
-# Local package imports
-from hivesense2mqtt.example_module import ExampleClass
+from hivesense2mqtt.app.app import HiveSense2Mqtt
 
 
 # Define this function as a the main command entrypoint
@@ -41,9 +41,16 @@ def main(
         logger.remove()
         logger.add(sys.stderr, level="INFO")
 
-    instance = ExampleClass()
-    for i in range(iterations):
-        logger.info(f"Iteration number {i}: {instance.add(i, i)}")
+    handler = HiveSense2Mqtt()
+    handler.loop_start()
+    try:
+        while True:
+            # Main loop is doing nothing
+            time.sleep(1)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        pass
 
 
 if __name__ == "__main__":

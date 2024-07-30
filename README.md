@@ -1,7 +1,6 @@
 # Hivesense2mqtt
 
 ![GitHub](https://img.shields.io/github/license/pcurt/hivesense2mqtt)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hivesense2mqtt)
 ![GitHub tag (with filter)](https://img.shields.io/github/v/tag/pcurt/hivesense2mqtt)
 ![PDM](https://img.shields.io/badge/pdm-managed-blueviolet)
 ![Black](https://img.shields.io/badge/code_style-black-000000)
@@ -19,11 +18,6 @@ Module that collect data from Lora backend and send to local MQTT broker with HA
   - [With `pip`, from a release version](#with-pip-from-a-release-version)
   - [With `pip`, from sources](#with-pip-from-sources)
 - [Development Quickstart](#development-quickstart)
-
-## Usage
-
-Describe here how to use this Python application/package: CLI options and flags,
-API when imported by another package, etc.
 
 ## Installation
 
