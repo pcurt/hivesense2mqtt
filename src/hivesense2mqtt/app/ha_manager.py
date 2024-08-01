@@ -1,5 +1,6 @@
 """Define the main class object."""
 
+import os
 import time
 from typing import Union
 
@@ -73,7 +74,8 @@ class HA_MANAGER:
         self.client.loop_start()
 
         # create device info dictionary
-        dev = HaDevice("hiveSense2mqtt", "hiveSense2mqtt-964868")
+        unique_id = "hiveSense2mqtt-" + str(os.getenv("HA_UNIQUE_ID"))
+        dev = HaDevice("hiveSense2mqtt", unique_id)
 
         logger.info("hiveSense2mqtt connected to HA")
 

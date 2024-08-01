@@ -117,7 +117,7 @@ class HiveSense2Mqtt:
 
         headers = {"Content-Type": "application/json"}
 
-        data = {"wifiAccessPoints": wifi_access_points}
+        data = {"considerIp": "false", "wifiAccessPoints": wifi_access_points}
 
         logger.info(f"Raw data : {data}")
 
