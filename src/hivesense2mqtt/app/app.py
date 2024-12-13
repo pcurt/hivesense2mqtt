@@ -99,6 +99,16 @@ class HiveSense2Mqtt:
             data_dict = {"latitude": lat, "longitude": lng, "gps_accuracy": accuracy}
             logger.info(f"location is: {data_dict}")
             self.ha_back.hspos.update_attribute(json.dumps(data_dict))
+        else:
+            location = message_dict.get("location")
+            if location is not None:
+                lat = location.get("lat")
+                lon = location.get("lon")
+                data_dict = {"latitude": lat, "longitude": lon, "gps_accuracy": 2000}
+                logger.info(f"Location from lora Network (poor gps_accuracy): {data_dict}")
+                self.ha_back.hspos.update_attribute(json.dumps(data_dict))
+            else:
+                logger.info("Location unavailable")
 
     def loop_start(self):
         """Start main loop that collect data from Orange backend."""
@@ -126,7 +136,7 @@ class HiveSense2Mqtt:
         )
         response = requests.post(url, headers=headers, json=data, timeout=3)
 
-        print(f"Statut de la réponse: {response.status_code}")
+        logger.info(f"Response status : {response.status_code}")
         if response.status_code == 200:
             response_data = response.json()
             location = response_data.get("location", {})
