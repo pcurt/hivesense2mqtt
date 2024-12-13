@@ -69,14 +69,12 @@ class HiveSense2Mqtt:
 
         payload_bytes = binascii.unhexlify(payload)
         device_id = payload_bytes[0]
-        vbat = payload_bytes[1] * 5 + 3000
+        vbat = payload_bytes[1] * 7 + 3000
         hx711_value = payload_bytes[2] | (payload_bytes[3] << 8) | (payload_bytes[4] << 16)
         bssids = [
             payload_bytes[5:11],
             payload_bytes[11:17],
             payload_bytes[17:23],
-            payload_bytes[23:29],
-            payload_bytes[29:35],
         ]
         logger.info(f"device_id: {device_id}")
         logger.info(f"vbat: {vbat}")
@@ -122,7 +120,9 @@ class HiveSense2Mqtt:
             bssids (list[str]): List of BSSIDs
         """
         wifi_access_points = [
-            {"macAddress": bssid} for bssid in bssids if bssid != "00:00:00:00:00:00"
+            {"macAddress": bssid}
+            for bssid in bssids
+            if bssid != "00:00:00:00:00:00" and len(bssid) == 17
         ]
 
         headers = {"Content-Type": "application/json"}
